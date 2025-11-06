@@ -1,0 +1,1 @@
+Jag ska göra en stämpelterminal för ett företag med 7 anställda. 
