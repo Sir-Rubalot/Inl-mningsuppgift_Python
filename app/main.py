@@ -25,22 +25,22 @@ class Worker():
         else:
             return None
         
-    #@staticmethod
-    #def flex_bank(start_day, end_day):
-    #    start_limit = start_day.replace(hour=6, minute=0, second=0, microsecond=0)
-    #    end_limit = start_day.replace(hour=17, minute=0, second=0, microsecond=0)
-#
-    #    if start_day < start_limit:
-    #        start_limit = start_limit
-    #    if end_day > end_limit:
-    #        end_day = end_limit
-#
-    #    delta = end_day - start_day
-    #    return delta
+    @staticmethod
+    def flex_bank(start_day, end_day):
+        start_limit = start_day.replace(hour=7, minute=0, second=0, microsecond=0)
+        end_limit = start_day.replace(hour=16, minute=0, second=0, microsecond=0)
+
+        if start_day < start_limit:
+            start_limit = start_limit
+        if end_day > end_limit:
+            end_day = end_limit
+
+        delta = end_day - start_day
+        return delta
     
     def calculate_overtime(start_time, end_time):
-        day_start = start_time.replace(hour=7, minute=0, second=0, microsecond=0)
-        day_end = start_time.replace(hour=16, minute=0, second=0, microsecond=0)
+        day_start = start_time.replace(hour=6, minute=0, second=0, microsecond=0)
+        day_end = start_time.replace(hour=17, minute=0, second=0, microsecond=0)
         total_time = end_time - start_time
         outside_time = datetime.timedelta(0)
         if start_time < day_start:
@@ -54,15 +54,9 @@ class Worker():
         if end_time > day_end:
                 outside_time += end_time - day_end
         return outside_time
-    
-#worker_sessions = {}
-#in_time = datetime()
-#worker_sessions.setdefaoult(name, []).append(('in', in_time))
-#out_time = datetime()
-#worker_sessions.setdefaoult(name, []).append(('out', out_time))
-    
+
     def flexbank(name):
-        sessions = worker_sessions.get(name)
+        sessions = worker_flex.get(name)
         if not sessions:
             print(f"Inga tider registrerade för {name}.")
             return
