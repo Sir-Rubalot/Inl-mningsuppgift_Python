@@ -6,7 +6,7 @@ def parse_time(time_str):
         hour, minute = map(int, time_str.split(":"))
         return datetime.datetime.combine(now, datetime.time(hour, minute))
 
-class Worker():
+class factory():
     def __init__(self, name):
         self.name = name
         self.time_in = None
