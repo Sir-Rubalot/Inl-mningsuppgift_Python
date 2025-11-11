@@ -1,16 +1,21 @@
 import datetime
 import sys
 
-def parse_time(time_str):
-        now = datetime.date.today()
-        hour, minute = map(int, time_str.split(":"))
-        return datetime.datetime.combine(now, datetime.time(hour, minute))
-
-class Worker():
+class Worker ():
     def __init__(self, name):
         self.name = name
         self.time_in = None
         self.time_out = None
+
+    def parse_time(time_str):
+        now = datetime.date.today()
+        hour, minute = map(int, time_str.split(":"))
+        return datetime.datetime.combine(now, datetime.time(hour, minute))
+    
+    def add_worker(self, name):
+        new_worker = Worker(name)
+        self.worker_in.append(new_worker)
+        return new_worker
 
     def check_in(self, time_in):
         self.time_in = time_in
@@ -60,6 +65,12 @@ class Worker():
         if not sessions:
             print(f"Inga tider registrerade för {name}.")
             return
+    
+#worker_sessions = {}
+#in_time = datetime()
+#worker_sessions.setdefaoult(name, []).append(('in', in_time))
+#out_time = datetime()
+#worker_sessions.setdefaoult(name, []).append(('out', out_time))
         
         total_time = datetime.timedelta()
         in_time = None
@@ -73,7 +84,3 @@ class Worker():
                     in_time = None
         print(f"Flexbank för {name}: {total_time}")
     
-    def add_worker(self, name):
-        new_worker = Worker(name)
-        self.worker_in.append(new_worker)
-        return new_worker

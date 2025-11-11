@@ -1,7 +1,7 @@
 import datetime
 import sys
-import factory 
-import worker
+from app.factory import Factory
+from app.worker import Worker
 
 while True:
     print("Välkommen till en ny dag!")
